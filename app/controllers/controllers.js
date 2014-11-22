@@ -76,10 +76,11 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
   function checkAnswer() {
     ans = $scope.currentAnswer ;
-    if (ans === undefined) 
-      return;
 
-    if (ans === 0) {
+    if (ans === undefined) {
+      // user hasn't chosen an answer, should skip to bottom
+    }
+    else if (ans === 0) {
       if ($scope.currentYear <= $scope.timelineSongs[0].year)
         answerSuccess();
     } else if (ans === -1) {
