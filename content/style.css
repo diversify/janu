@@ -1,0 +1,499 @@
+html, body {
+	padding: 0px;
+	margin: 0px;
+    top: 0px;
+    min-height: 100%;
+	-webkit-font-smoothing: subpixel-antialiased;
+	font-weight: 300;
+    font-family: 'Roboto', georgia;
+    background: #eee;
+}
+
+div {
+	margin: 0px;
+	padding: 0px;
+    overflow: hidden;
+	box-sizing: border-box;
+}
+
+p {
+	font-weight: 300;
+    font-family: 'Roboto', georgia;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0px;
+    font-weight: 300;
+    font-family: 'Roboto';
+    color: #222;
+}
+
+h1 {
+	font-size: 24px;
+    font-weight: 300;
+	text-align: left;
+    margin: 0;
+    color: #f0f0f0;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 300;
+}
+
+label {
+	color: #f0f0f0;
+}
+
+/* -------------------- GENERAL ------------------ */
+
+.odd {
+    background: #f9f9f9;
+}
+.even {
+    background: #fff;
+}
+
+
+/* -------------------- BAR   -------------------- */
+
+#menubar {
+    height: 56px;
+    width: 100%;
+    background: #e9573e;
+    padding: 10px 0px;
+}
+
+#menubar h1 {
+    font-size: 24px;
+    font-weight: 300;
+    text-align: left;
+    margin-left: 15px;
+} 
+#menubar img {
+    
+}
+
+#menubar * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#search {
+    float: right;
+    margin-right: 10px;
+}
+
+#searchbar {
+    height: 36px;
+    width: 330px;
+    position: absolute;
+    z-index: 5;
+    right: 10px;
+    background: #f0f0f0;
+    display: none;
+}
+
+/* -------------------- MENU  -------------------- */
+
+#sidemenu {
+    width: 300px;
+    height: 510px;
+    background: #fb6e52;
+    position: absolute;
+    z-index: 5;
+    top: 56px;
+    display: none;
+}
+
+#sidemenu-top {
+
+}
+
+#sidemenu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#sidemenu li a {
+    color: #f0f0f0;
+    font-size: 18px;
+    display: block;
+    padding: 15px;
+    /*padding-left: 50px;*/
+    border-bottom: 1px solid #e9573e;
+}
+
+.li-icon {
+    width: 32px;
+    height: 32px;
+}
+
+li:last-child {
+    border-bottom: 0px none;
+}
+
+.sidemenu-img {
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-top: 10px;
+    margin: 10px 10px;
+}
+
+/* -------------------- PHONE -------------------- */
+
+#nexus5 {
+    background: url('/content/bilder/nexus5.png');
+    background-size: contain;
+    width: 398px;
+    height: 800px;
+    margin: 20px auto;
+    padding-top: 75px;
+    padding-left: 20px;
+}
+
+#android-window {
+    width: 360px;
+    height: 566px;
+    background: #f0f0f0;
+    position: relative;
+    z-index: 0;
+    margin: 0px;
+}
+
+#bottombar, #statusbar {
+    height: 24px;
+    width: 360px;
+    background: #222;
+}
+
+#bottombar {
+    height: 50px;
+}
+
+/* -------------------- FEED  -------------------- */
+
+.status {
+    width: 340px;
+    margin: 10px;
+    background: #fff;
+}
+
+.status p {
+    margin: 10px;
+}
+
+.img-round {
+    border-radius: 50%;
+    margin: 10px;
+    width: 65px;
+    height: 65px;
+    float: left;
+}
+
+.footer {
+    border-top: solid 1px #e9573e;
+    clear: both;
+}
+
+.footer img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.comment, .like {
+    width: 50%;
+    float: left;
+    text-align: center;
+    padding: 10px;
+}
+
+.comment {
+    border-right: 1px solid #e9573e;
+}
+
+/* -------------------- MAP   -------------------- */
+
+#map {
+    width: 340px;
+    height: 490px;
+    margin: 10px;
+}
+.infoWindowContent {
+    font-size:  14px !important;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+#map-img {
+    width: 100%;
+}
+
+#explore-map {
+    height: 300px;
+}
+
+/* -------------------- LIST --------------------- */
+
+.list-item {
+    width: 100%;
+}
+
+.list-item img {
+    float: left;
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+}
+
+.list-item p, h3 {
+}
+
+.dist {
+    float: right;
+    font-weight: bold;
+    margin: 0 10px;
+    margin-top: -20px;
+}
+
+/* -------------------- ARTPIECE ----------------- */
+
+.artpiece {
+    margin: 10px;
+}
+
+.artpiece p {
+    margin: 10px;
+}
+
+.artpiece h1 {
+    background: #e9573e;
+    padding: 5px 15px;
+}
+
+.artpiece img {
+    width: 340px;
+}
+
+.artpiece img.non-rate {
+    width: 240px;
+}
+
+.artpiece h2 {
+    font-weight: bold;
+    margin: 10px;
+    margin-top: 25px;
+}
+
+.non-rate {
+    opacity: 0.1;
+    margin-top: -15px;
+}
+
+.rate {
+    margin-top: -15px;
+}
+
+#rate, .non-rate {
+    width: 240px;
+    margin-left: 50px;
+}
+
+#redbox {
+    width: 50px;
+    height: 50px;
+    background: red;
+    margin-top: -107px;
+    position: absolute;
+    margin-left: 145px;
+    z-index: -1;
+}
+
+/* -------------------- CALENDAR ----------------- */
+
+table {
+    margin: 0px 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+td {
+    text-align: center;
+    width: 43px;
+    border-radius: 50%;
+}
+
+tr {
+    height: 45px;
+}
+
+td:hover {
+    background: #ccc;
+}
+
+.event-mark {
+    background: #dedede;
+}
+
+.event {
+    margin: 0px 15px;
+    padding: 15px 0px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.event h2 {
+    font-weight: bold;
+}
+
+.event-date {
+    text-align: center;
+    font-size: 42px;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 4px solid #fb6e52;
+    float: left;
+    margin-right: 10px;
+}
+
+.event-date p {
+    font-size: 16px;
+    margin-top: -15px;
+}
+
+.today {
+    background: #fb6e52;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+#calendar h1 {
+    background: #e9573e;
+    padding: 5px 15px;
+    margin: 10px 10px 0 10px;
+}
+
+/* -------------------- MUSEUM ------------------- */
+
+.floor {
+    width: 340px;
+    margin: 10px;
+}
+
+.floor h2 {
+    width: 100%;
+    padding: 10px;
+    background: #fb6e52;
+    color: #f0f0f0;
+}
+
+/* -------------------- PROFILE ------------------- */
+
+#about {
+    
+}
+
+#about img {
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+#about h1 {
+    color: #222;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+#profile h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#profile div {
+    padding: 10px;
+}
+
+#progress img {
+    width: 60%;
+}
+
+.achievement-list-img, .latest-list-img {
+    border-radius: 50%;
+    margin: 4px;
+    width: 55px;
+    height: 55px;
+}
+
+/* -------------------- SETTINGS ------------------ */
+
+.setting-label {
+    color: #222;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 15px;
+    border-bottom: 2px solid #ccc;
+    display: block;
+    margin: 0px 10px;
+}
+
+.setting-list {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.setting-list li {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    margin: 0px 15px;
+}
+
+.setting-list li:hover {
+    background: #e0e0e0;
+}
+
+@media screen and (max-width: 400px) {
+    #nexus5 {
+        background: #eee;
+        padding: 0px;
+        margin: 0px;
+        height: auto;
+    }
+    #statusbar {
+        display: none;
+    }
+
+    #sidemenu {
+        position: fixed;
+    }
+
+    #bottombar {
+        display: none;
+    }
+
+    #android-window {
+        padding-top: 56px;
+        height: auto;
+    }
+    #menubar {
+        position: fixed;
+        margin-top: -56px;
+    }
+
+    .ui-loader, .ui-corner-all, .ui-body-a, .ui-loader-default {
+        display: none;
+    }
+}
