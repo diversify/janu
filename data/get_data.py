@@ -49,14 +49,21 @@ SEARCH_BASE_URL = 'https://api.spotify.com/v1/search'
 GET_PLAYLIST_BASE_URL = 'https://api.spotify.com/v1/users/{}/playlists/{}/tracks'
 
 def track_object(obj): 
-    return {
+    if not (obj['name'] and obj['id']):
+        return None
+
+    res = {
         'name': obj['name'],
         'song_id': obj['id'],
         'artist_name': obj['artists'][0]['name'],
         'artist_id': obj['artists'][0]['id'],
         'popularity': obj['popularity'],
-        'preview_url': obj['preview_url'],
     }
+
+    if obj['preview_url']:
+        res['preview_url'] = obj['preview_url']
+
+    return res
 
 def get_billboard_playlist(year):
 
@@ -125,7 +132,11 @@ def get_songs_for_year_from_playlists(year, access_token):
     resp = r.json()
     items = resp['items']
 
-    return [track_object(t['track']) for t in items]
+    res = list()
+    for t in items:
+        o = track_object(t['track'])
+        if o: res.append(o)
+    return res
 
 def get_songs_for_years(years, access_token, from_playlists=False):
     res = dict()
