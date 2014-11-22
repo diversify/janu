@@ -113,6 +113,15 @@ label {
     display: inline-block;
 }
 
+#timeline-base-span {
+    height: 12px;
+    width: 100%;
+    background: #d9d9d9;
+    position: absolute;
+    margin-top: -12px;
+    z-index: 1;
+}
+
 .timeline-span {
     height: 12px;
     margin-top: 62px;
@@ -120,9 +129,11 @@ label {
     background: #d9d9d9;
     display: inline-block;
     vertical-align: middle;
+    position: relative;
+    z-index: 3;
 }
 
-.timeline-span:hover {
+.timeline-span:hover, #timeline-base-span:hover {
     background: #c66;
 }
 
@@ -133,13 +144,20 @@ label {
     position: absolute;
     background:#333;
     top: 50%;
+    z-index: 5;
     margin-top: -40px;
     margin-left: -40px;
+    text-align: center;
+    color: #f5f5f5;
+    line-height: 60px;
+    font-size: 21px;
 }
 
 .song-circle {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
 }
 
 #game-footer {
