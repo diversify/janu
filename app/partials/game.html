@@ -22,9 +22,9 @@
 </div>
 
 <div id="timeline">
-	<div ng-repeat-start="song in timelineSongs" class="timeline-span {{song.selected}}" style="width: {{timelineSpanWidth()}}%" ng-click="chooseSpan($index)"></div>
+	<div ng-repeat-start="song in timelineSongs" class="timeline-span {{isSelected($index)}}" style="width: {{timelineSpanWidth()}}%" ng-click="selectSpan($index)"></div>
   <div ng-repeat-end class="song-circle">{{song.year}}</div>
-	<div id="timeline-base-span" class="{{finalSpanSelected()}}" ng-click="chooseSpan(-1)"></div>
+	<div id="timeline-base-span" class="{{isSelected(-1)}}" ng-click="selectSpan(-1)"></div>
 </div>
 
 <div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em></h2><h2 id="round">CORRECT GUESSES {{round}} / 10</h2></div>

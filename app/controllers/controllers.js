@@ -38,24 +38,15 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     }, 1000);
   }
 
-  $scope.finalSpanSelected = function () {
-    if ($scope.currentAnswer === -1)
+  $scope.isSelected = function (index) {
+    if ($scope.currentAnswer === index)
       return "timeline-selected"
     else
       return ""
   }
 
-  $scope.chooseSpan = function (index) {
-    //unselect previous span
-    if ($scope.currentAnswer !== undefined && $scope.currentAnswer !== -1) {
-      $scope.timelineSongs[$scope.currentAnswer].selected = "";
-    }
-
-    //update selection
-    $scope.currentAnswer = index; 
-    if ($scope.currentAnswer !== -1) {
-      $scope.timelineSongs[$scope.currentAnswer].selected = "timeline-selected";
-    }
+  $scope.selectSpan = function (index) {
+    $scope.currentAnswer = index;
   }
 
 	$scope.timelineSpanWidth = function (){
