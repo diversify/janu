@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<!--<script type="text/javascript">
 	$('#timeline').mouseenter(function(e){
 		$("#current-song-circle").css({width:'80px', height:'80px'});
 	});
@@ -6,22 +6,18 @@
 	$('#timeline').mousemove(function(e){
 	    $("#current-song-circle").css({left:e.pageX});
 	});
-</script>
+</script>-->
 
-<div id="game-header"><h2>ROUND {{round}} / 10</h2></div>
+<div id="game-header"><h2><a href="/">BACK</a></div>
 
 <div id="game-circle">
-	<div id="question">
-		<h2 id="artist"></h2>
-		<h2 id="song"></h2>
-	</div>
+	<h2 id="song">Flawless {{song.title}}</h2>
+	<h2 id="artist">Taylor Swift{{song.artist}}</h2>
 </div>
 
 <div id="timeline">
 	<div class="timeline-span"></div><div id="current-song-circle"></div><div class="timeline-span"></div><div class="timeline-span"></div>
 </div>
 
-
-
-<div id="game-footer"><h2>SCORE <strong>{{score.round}}</strong> <em>{{score.total}}</em></h2></div>
+<div id="game-footer"><h2 id="score">SCORE <strong>{{score.round}}</strong> <em>{{score.total}}</em></h2><h2 id="round">ROUND {{round}} / 10</h2></div>
 

@@ -11,7 +11,8 @@ html, body {
 	-webkit-font-smoothing: subpixel-antialiased;
 	font-weight: 300;
     font-family: 'Questrial', georgia;
-    background: #e55;
+    background: #aaa url(http://hejelin.se/back.jpg);
+    background-size: cover;
 }
 
 body {
@@ -66,22 +67,29 @@ label {
     padding: 25px;
 }
 
-#game-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 25px;
-    width: 100%;
-    background: #eee;
-}
-
 #game-circle {
     height: 300px;
     width: 300px;
-    border: 5px solid #202020;
+    border: 8px solid rgba(0,0,0,0.3);
     border-radius: 50%;
-    background: #eee;
     margin: 20px auto 50px;
+    position: relative;
+    overflow: visible;
+    padding-top: 50px;
+}
+
+#artist, #song {
+    text-align: center;
+    position: relative;
+    padding: 15px;
+    background: #e55;
+    z-index: 5;
+}
+
+#artist {
+    background: #9c3;
+    text-align: right;
+    margin-top: 25px;
 }
 
 #timeline {
@@ -96,21 +104,19 @@ label {
 }
 
 .timeline-span {
-    height: 8px;
-    margin-top: 66px;
+    height: 12px;
+    margin-top: 62px;
     width: 33.333333333333333%;
     background: #d9d9d9;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.song-circle {
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    position: absolute;
-    background:#333;
+.timeline-span:hover {
+    background: #c66;
 }
 
-#current-song-circle {
+#current-song-circle, .song-circle {
     height: 0px;
     width: 0px;
     border-radius: 50%;
@@ -119,4 +125,30 @@ label {
     top: 50%;
     margin-top: -40px;
     margin-left: -40px;
+}
+
+.song-circle {
+    height: 80px;
+    width: 80px;
+}
+
+#game-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 25px;
+    width: 100%;
+    background: #eee;
+}
+
+#game-footer h2 {
+    display: inline-block;
+}
+
+#score {
+    float: left;
+}
+
+#round {
+    float: right;
 }
