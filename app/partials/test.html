@@ -1,1 +1,8 @@
-<h2>yay</h2>
+<h2>yayss</h2>
+<div ng-controller="januController as janu">
+	<input type="button" value = "Add Song" ng-click="addSong()">
+	<div ng-repeat="song in janu.timelineSongs">
+		<h3>{{song.name}} : {{song.year}}</h3>
+	</div>
+
+</div>
