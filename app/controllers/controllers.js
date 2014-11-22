@@ -19,15 +19,20 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.score = {};
     $scope.score.total = 0;
 
-    // add the first song
-    $scope.addSong();
+    // add a song, ignore what it is
+    addSongToTimeline(fetchNewSong());
+
+    // this is the first song the user guesses
+    firstSong = fetchNewSong();
+    playSong(firstSong);
 
     $scope.gameInSession = true;
     $interval(function(){
-    	$scope.score.round = getScore(); 
+    	$scope.score.round = getTimeLeft(); 
     }, 1);
-
   }
+
+  $scope
 
   $scope.finalSpanSelected = function () {
     if ($scope.currentAnswer === -1)
@@ -38,7 +43,6 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
   $scope.chooseSpan = function (index) {
     //unselect previous span
-    console.log($scope.currentAnswer);
     if ($scope.currentAnswer !== undefined && $scope.currentAnswer !== -1) {
       $scope.timelineSongs[$scope.currentAnswer].selected = "";
     }
@@ -51,23 +55,13 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   }
 
   $scope.checkAnswer = function () {
-    song = $scope.addSong();
-		playSong(song);
+    // song = $scope.addSong();
+		// playSong(song);
+		// janu.score.total += getTimeLeft();
   }
 
 	$scope.addSong = function (evt) {
-		janu.score.total += getScore();
-		var years = _.difference(_.keys(janu.songs),janu.timelineYears);
-		var year = years[Math.floor(Math.random()*years.length)];
-		var randomSong = getRandomSong(janu.songs[year]);
-		randomSong.year = year;
-    
-    janu.currentSong = randomSong;
 
-		janu.timelineSongs.push(randomSong);
-    janu.timelineSongs = _.sortBy(janu.timelineSongs, function (song) { return parseInt(song.year); })
-		janu.timelineYears.push(year);
-		janu.timelineYears.sort();
 
     return randomSong;
 	};
@@ -76,27 +70,32 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 		return calculateWidths(janu.timelineSongs.length+1)-0.2;
 	};
 
+  // returns a new song to play
+  function fetchNewSong() {
+		var years = _.difference(_.keys(janu.songs),janu.timelineYears);
+		var year = years[Math.floor(Math.random()*years.length)];
+		var randomSong = getRandomSong(janu.songs[year]);
+		randomSong.year = year;
+
+    $scope.currentSong = randomSong;
+    $scope.currentYear = year;
+
+    return randomSong;
+  }
+
+  // adds the song to timeline
+  function addSongToTimeline(song) {
+		janu.timelineSongs.push($scope.currentSong);
+    janu.timelineSongs = _.sortBy(janu.timelineSongs, function (song) { return parseInt(song.year); })
+		janu.timelineYears.push($scope.currentYear);
+		janu.timelineYears.sort();
+  }
+
 }]);
+
 function getRandomSong(year){
 	return year[Math.floor(Math.random()*year.length)];
 }
 
-//Enter spanNumber (index starts at zero) ex. inf---0---1999---1---2005---2---2010---3---inf
-function checkAnswer(){
-  var spanNumber = user.answer;
-  if(spanNumber == 0){
-          if(songs[currentSong].year <= years[0])
-                  return true;
-  }
-  else if(spanNumber==years.length){
-          if(songs[currentSong].year >= years[years.length-1])
-                  return true;
-  }
-  else{
-          if(songs[currentSong].year <= years[spanNumber] && songs[currentSong].year >= years[spanNumber-1]){
-                  return true
-          }
-  }
-  return false;
-}
+
 
