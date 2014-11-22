@@ -2,36 +2,46 @@ var app = angular.module('janu');
 
 app.controller('januController', ['$scope','$http', function ($scope,$http){
 	var janu = $scope;
-	janu.timelineSongs = [];
-	janu.timelineYears = [];
-	janu.score = {};
-	janu.score.total = 0;
+
 	$http.get('data/output.json').success(function(data){
 			janu.songs = data;
-			
 	});
+
+  $scope.gameInSession = false;
+
+  // start game
+  $scope.startGame = function () {
+    $scope.timelineSongs = [];
+    $scope.timelineYears = [];
+    $scope.currentSong = undefined;
+    $scope.score = {};
+    $scope.score.total = 0;
+
+    $scope.gameInSession = true;
+  }
+
+
 	$scope.addSong = function (evt){
-		janu.score.total +=getScore();
+		janu.score.total += getScore();
 		var years = _.difference(_.keys(janu.songs),janu.timelineYears);
 		var year = years[Math.floor(Math.random()*years.length)];
 		var randomSong = getRandomSong(janu.songs[year]);
 		randomSong.year = year;
+    
+    janu.currentSong = randomSong;
+
 		janu.timelineSongs.push(randomSong);
+    janu.timelineSongs = _.sortBy(janu.timelineSongs, function (song) { return parseInt(song.year); })
 		janu.timelineYears.push(year);
 		janu.timelineYears.sort();
 		playSong(randomSong);
-		//renderTimeline(janu.timelineSongs.length+1);
 	};
+
 	$scope.timelineSpanWidth = function (){
 		return calculateWidths(janu.timelineSongs.length+1);
 	};
 
-}]).directive('timelineSong', function(){
-    return {
-        restrict: 'E',
-        templateUrl: '/app/partials/timeline-song.html'
-    };
-});;
+}]);
 
 function getRandomSong(year){
 	return year[Math.floor(Math.random()*year.length)];
