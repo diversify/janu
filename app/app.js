@@ -8,6 +8,11 @@
                     controller: 'januController',
                     templateUrl: '/app/partials/test.html'
                 })
+            .when('/', 
+                {
+                    controller: 'januController',
+                    templateUrl: '/app/partials/game.html'
+                })
             
             .otherwise({ redirectTo: '/' });
     });
