@@ -38,24 +38,15 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     }, 1000);
   }
 
-  $scope.finalSpanSelected = function () {
-    if ($scope.currentAnswer === -1)
+  $scope.isSelected = function (index) {
+    if ($scope.currentAnswer === index)
       return "timeline-selected"
     else
       return ""
   }
 
-  $scope.chooseSpan = function (index) {
-    //unselect previous span
-    if ($scope.currentAnswer !== undefined && $scope.currentAnswer !== -1) {
-      $scope.timelineSongs[$scope.currentAnswer].selected = "";
-    }
-
-    //update selection
-    $scope.currentAnswer = index; 
-    if ($scope.currentAnswer !== -1) {
-      $scope.timelineSongs[$scope.currentAnswer].selected = "timeline-selected";
-    }
+  $scope.selectSpan = function (index) {
+    $scope.currentAnswer = index;
   }
 
 	$scope.timelineSpanWidth = function (){
@@ -85,10 +76,11 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
   function checkAnswer() {
     ans = $scope.currentAnswer ;
-    if (ans === undefined) 
-      return;
 
-    if (ans === 0) {
+    if (ans === undefined) {
+      // user hasn't chosen an answer, should skip to bottom
+    }
+    else if (ans === 0) {
       if ($scope.currentYear <= $scope.timelineSongs[0].year)
         answerSuccess();
     } else if (ans === -1) {
