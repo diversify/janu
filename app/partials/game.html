@@ -17,7 +17,7 @@
     <h2 id="artist">{{currentSong.artist_name}}</h2>
   </div>
   <div ng-if="!gameInSession">
-    <button id="start-game">Start Game</button>
+    <input type="button" ng-click="startGame()" id="start-game" value="Start Game" />
   </div>
 </div>
 
