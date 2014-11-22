@@ -17,6 +17,10 @@ app.controller('januController', ['$scope','$http', function ($scope,$http){
 		janu.timelineYears.push(year);
 		janu.timelineYears.sort();
 		playSong(randomSong);
+		//renderTimeline(janu.timelineSongs.length+1);
+	};
+	$scope.timelineSpanWidth = function (){
+		return calculateWidths(janu.timelineSongs.length+1);
 	};
 
 }]).directive('timelineSong', function(){
