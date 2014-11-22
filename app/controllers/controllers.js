@@ -9,13 +9,14 @@ app.controller('januController', ['$scope','$http', function ($scope,$http){
 			
 	});
 	$scope.addSong = function (evt){
-		var years = _.without(_.keys(janu.songs),janu.timelineYears);
+		var years = _.difference(_.keys(janu.songs),janu.timelineYears);
 		var year = years[Math.floor(Math.random()*years.length)];
 		var randomSong = getRandomSong(janu.songs[year]);
 		randomSong.year = year;
 		janu.timelineSongs.push(randomSong);
 		janu.timelineYears.push(year);
-		console.log(janu.timelineYears);
+		janu.timelineYears.sort();
+		playSong(randomSong);
 	};
 
 }]);
