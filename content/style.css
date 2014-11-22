@@ -11,7 +11,7 @@ html, body {
 	-webkit-font-smoothing: subpixel-antialiased;
 	font-weight: 300;
     font-family: 'Questrial', georgia;
-    background: #aaa url(http://hejelin.se/back.jpg);
+    background: #aaa url(image/main-wallpaper.jpg);
     background-size: cover;
 }
 
@@ -118,7 +118,7 @@ label {
     width: 100%;
     background: #d9d9d9;
     position: absolute;
-    margin-top: -12px;
+    margin-top: 62px;
     z-index: 1;
 }
 
