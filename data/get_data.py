@@ -148,4 +148,5 @@ if __name__ == '__main__':
 
     a = authorize()
     data = get_songs_for_years(range(1950, 2014+1), a, from_playlists=True)
+    data = { k: data.get(k) for k in data.keys() if len(data.get(k)) != 0 }
     dump_to_file(data, 'output.json')
