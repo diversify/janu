@@ -23,7 +23,7 @@ app.controller('januController', ['$scope','$http', function ($scope,$http){
 		//renderTimeline(janu.timelineSongs.length+1);
 	};
 	$scope.timelineSpanWidth = function (){
-		return calculateWidths(janu.timelineSongs.length+1);
+		return calculateWidths(janu.timelineSongs.length+1)-0.2;
 	};
 
 }]).directive('timelineSong', function(){
