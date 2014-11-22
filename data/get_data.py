@@ -147,7 +147,5 @@ def dump_to_file(j, filename):
 if __name__ == '__main__':
 
     a = authorize()
-    data = {}
-    # data = get_songs_for_years(range(1957, 1980), a, from_playlists=True)
-    data.update(get_songs_for_years(range(1980, 2014+1), a, from_playlists=True))
+    data = get_songs_for_years(range(1950, 2014+1), a, from_playlists=True)
     dump_to_file(data, 'output.json')
