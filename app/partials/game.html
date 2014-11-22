@@ -13,6 +13,7 @@
 <input type="button" value = "Add Song" ng-click="addSong()">
 <div id="game-circle">
   <div ng-if="gameInSession">
+  	<h2 id="timer"><strong>{{score.round}}</strong></h2>
     <h2 id="question">Which timespan?</h2>
   </div>
   <div ng-if="!gameInSession">
@@ -26,5 +27,5 @@
 	<div id="timeline-base-span"></div>
 </div>
 
-<div id="game-footer"><h2 id="score">SCORE <strong>{{score.round}}</strong> <em>{{score.total}}</em></h2><h2 id="round">ROUND {{round}} / 10</h2></div>
+<div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em></h2><h2 id="round">ROUND {{round}} / 10</h2></div>
 
