@@ -135,8 +135,8 @@ label {
     z-index: 3;
 }
 
-.timeline-span:hover, #timeline-base-span:hover {
-    background: #c66;
+.timeline-span:hover, #timeline-base-span:hover, .timeline-selected {
+    background: #c66 !important;
 }
 
 #current-song-circle, .song-circle {

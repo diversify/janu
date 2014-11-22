@@ -10,7 +10,7 @@
 
 <div id="game-header"><h2><a href="/">BACK</a></div>
 
-<input type="button" value = "Add Song" ng-click="addSong()">
+<!-- <input type="button" value = "Add Song" ng&#45;click="addSong()"> -->
 <div id="game-circle">
   <div ng-if="gameInSession">
   	<h2 id="timer"><strong>{{score.round}}</strong></h2>
@@ -22,9 +22,9 @@
 </div>
 
 <div id="timeline">
-	<div ng-repeat-start="song in timelineSongs" class="timeline-span" style="width: {{timelineSpanWidth()}}%"></div>
-  	<div ng-repeat-end class="song-circle">{{song.year}}</div>
-	<div id="timeline-base-span"></div>
+	<div ng-repeat-start="song in timelineSongs" class="timeline-span {{song.selected}}" style="width: {{timelineSpanWidth()}}%" ng-click="chooseSpan($index)"></div>
+  <div ng-repeat-end class="song-circle">{{song.year}}</div>
+	<div id="timeline-base-span" class="{{finalSpanSelected()}}" ng-click="chooseSpan(-1)"></div>
 </div>
 
 <div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em></h2><h2 id="round">ROUND {{round}} / 10</h2></div>
