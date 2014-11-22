@@ -79,7 +79,7 @@ label {
 #game-circle {
     height: 300px;
     width: 300px;
-    border: 8px solid rgba(0,0,0,0.3);
+    border: 8px solid rgba(255,255,255,0.3);
     border-radius: 50%;
     margin: 20px auto 50px;
     position: relative;
@@ -89,18 +89,14 @@ label {
     background-size: cover;
 }
 
-#artist, #song {
+#question {
     text-align: center;
     position: relative;
     padding: 15px;
-    background: #e55;
+    background: #ff9000;
     z-index: 5;
-}
-
-#artist {
-    background: #9c3;
-    text-align: right;
-    margin-top: 25px;
+    font-size: 28px;
+    margin-top: 160px;
 }
 
 #timeline {

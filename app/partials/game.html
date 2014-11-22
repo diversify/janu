@@ -13,8 +13,7 @@
 <!-- <input type="button" value = "Add Song" ng&#45;click="addSong()"> -->
 <div id="game-circle">
   <div ng-if="gameInSession">
-    <h2 id="song">{{currentSong.name}}</h2>
-    <h2 id="artist">{{currentSong.artist_name}}</h2>
+    <h2 id="question">Which timespan?</h2>
   </div>
   <div ng-if="!gameInSession">
     <input type="button" ng-click="startGame()" id="start-game" value="Start Game" />
