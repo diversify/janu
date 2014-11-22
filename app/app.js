@@ -8,12 +8,26 @@
                     controller: 'januController',
                     templateUrl: '/app/partials/test.html'
                 })
-            .when('/', 
+            .when('/game', 
                 {
                     controller: 'januController',
                     templateUrl: '/app/partials/game.html'
                 })
-            
+            .when('/', 
+                {
+                    controller: 'januController',
+                    templateUrl: '/app/partials/start.html'
+                })
+            .when('/start', 
+                {
+                    controller: 'januController',
+                    templateUrl: '/app/partials/start.html'
+                })
+            .when('/end', 
+                {
+                    controller: 'januController',
+                    templateUrl: '/app/partials/end.html'
+                })
             .otherwise({ redirectTo: '/' });
     });
 

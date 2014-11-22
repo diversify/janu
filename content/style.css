@@ -38,11 +38,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-	font-size: 24px;
+	font-size: 126px;
     font-weight: 300;
 	text-align: left;
     margin: 0;
     color: #f0f0f0;
+    text-align: center;
 }
 
 h2 {
@@ -52,7 +53,7 @@ h2 {
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: #ffc000;
     font-weight: 300;
 }
 
@@ -194,3 +195,21 @@ label {
     float: right;
 }
 
+#start {
+    background: rgba(0,0,0,0.3);
+    width: 800px;
+    height: 460px;
+    margin: auto;
+    top: 50px;
+    position: relative;
+    padding-top: 100px;
+}
+
+#start h1 {
+    margin-bottom: 40px;
+}
+
+#start h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
