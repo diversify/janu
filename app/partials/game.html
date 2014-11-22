@@ -12,13 +12,18 @@
 
 <input type="button" value = "Add Song" ng-click="addSong()">
 <div id="game-circle">
-	<h2 id="song">Flawless {{song.title}}</h2>
-	<h2 id="artist">Taylor Swift{{song.artist}}</h2>
+  <div ng-if="gameInSession">
+    <h2 id="song">{{currentSong.name}}</h2>
+    <h2 id="artist">{{currentSong.artist_name}}</h2>
+  </div>
+  <div ng-if="!gameInSession">
+    <input type="button" id="start-game" ng-click="startGame()" value="Start Game">
+  </div>
 </div>
 
 <div id="timeline">
 	<div ng-repeat-start="song in timelineSongs" class="timeline-span" style="width: {{timelineSpanWidth()}}%"></div>
-	<div ng-repeat-end class="song-circle"></div>
+  	<div ng-repeat-end class="song-circle">{{song.year}}</div>
 	<div id="timeline-base-span"></div>
 </div>
 
