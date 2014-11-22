@@ -27,12 +27,16 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     playSong(firstSong);
 
     $scope.gameInSession = true;
+
+    // start the timer
     $interval(function(){
-    	$scope.score.round = getTimeLeft(); 
+      timeLeft = getTimeLeft();
+    	$scope.score.round = timeLeft; 
+      if (timeLeft <= 0) {
+        checkAnswer();
+      }
     }, 1);
   }
-
-  $scope
 
   $scope.finalSpanSelected = function () {
     if ($scope.currentAnswer === -1)
@@ -53,18 +57,6 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       $scope.timelineSongs[$scope.currentAnswer].selected = "timeline-selected";
     }
   }
-
-  $scope.checkAnswer = function () {
-    // song = $scope.addSong();
-		// playSong(song);
-		// janu.score.total += getTimeLeft();
-  }
-
-	$scope.addSong = function (evt) {
-
-
-    return randomSong;
-	};
 
 	$scope.timelineSpanWidth = function (){
 		return calculateWidths(janu.timelineSongs.length+1)-0.2;
@@ -89,6 +81,31 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     janu.timelineSongs = _.sortBy(janu.timelineSongs, function (song) { return parseInt(song.year); })
 		janu.timelineYears.push($scope.currentYear);
 		janu.timelineYears.sort();
+  }
+
+  function checkAnswer() {
+    ans = $scope.currentAnswer ;
+    if (ans === undefined) 
+      return;
+
+    if (ans === 0) {
+      if ($scope.currentYear <= $scope.timelineSongs[0].year)
+        answerSuccess();
+    } else if (ans === -1) {
+      if ($scope.currentYear >= _.last($scope.timelineSongs).year)
+        answerSuccess();
+    } else {
+      if ($scope.currentYear >= $scope.timelineSongs[ans-1] &&
+          $scope.currentYear <= $scope.timelineSongs[ans])
+        answerSuccess();
+    }
+
+    fetchNewSong();  
+  }
+
+  function answerSuccess() {
+    addSongToTimeline($scope.currentSong); 
+    $scope.score.total += 10;
   }
 
 }]);
