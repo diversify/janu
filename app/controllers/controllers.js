@@ -1,6 +1,6 @@
 var app = angular.module('janu');
 
-app.controller('januController', ['$scope','$http', function ($scope,$http){
+app.controller('januController', ['$scope','$http','$interval', function ($scope,$http,$interval){
 	var janu = $scope;
 
 	$http.get('data/output.json').success(function(data){
@@ -16,8 +16,11 @@ app.controller('januController', ['$scope','$http', function ($scope,$http){
     $scope.currentSong = undefined;
     $scope.score = {};
     $scope.score.total = 0;
-
     $scope.gameInSession = true;
+    $interval(function(){
+    	$scope.score.round = getScore(); 
+    }, 1);
+
   }
 
 
@@ -38,11 +41,10 @@ app.controller('januController', ['$scope','$http', function ($scope,$http){
 	};
 
 	$scope.timelineSpanWidth = function (){
-		return calculateWidths(janu.timelineSongs.length+1);
+		return calculateWidths(janu.timelineSongs.length+1)-0.2;
 	};
 
 }]);
-
 function getRandomSong(year){
 	return year[Math.floor(Math.random()*year.length)];
 }
