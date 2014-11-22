@@ -22,7 +22,6 @@ body {
 div {
 	margin: 0px;
 	padding: 0px;
-    overflow: hidden;
 	box-sizing: border-box;
 }
 
@@ -67,6 +66,16 @@ label {
     padding: 25px;
 }
 
+.caret-down {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #eee;
+    /* height: 40px; */
+    margin: auto;
+}
+
 #game-circle {
     height: 300px;
     width: 300px;
@@ -76,6 +85,8 @@ label {
     position: relative;
     overflow: visible;
     padding-top: 50px;
+    background: url(image/audiowave-gif.gif);
+    background-size: cover;
 }
 
 #artist, #song {
@@ -96,7 +107,6 @@ label {
     width: 100%;
     height: 140px;
     position: relative;
-    background: rgba(255,255,255,0.3);
 }
 
 #timeline > * {
@@ -152,3 +162,4 @@ label {
 #round {
     float: right;
 }
+
