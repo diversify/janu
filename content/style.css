@@ -173,6 +173,17 @@ label {
     display: inline-block;
 }
 
+#game-footer strong {
+    display: inline-block;
+    font-weight: normal;
+    color: #ff9000;
+}
+
+#game-footer em {
+    font-style: normal;
+    color: #ffc000;
+}
+
 #score {
     float: left;
 }
