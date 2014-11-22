@@ -4,11 +4,14 @@ app.controller('januController', ['$scope','$http', function ($scope,$http){
 	var janu = $scope;
 	janu.timelineSongs = [];
 	janu.timelineYears = [];
+	janu.score = {};
+	janu.score.total = 0;
 	$http.get('data/output.json').success(function(data){
 			janu.songs = data;
 			
 	});
 	$scope.addSong = function (evt){
+		janu.score.total +=getScore();
 		var years = _.difference(_.keys(janu.songs),janu.timelineYears);
 		var year = years[Math.floor(Math.random()*years.length)];
 		var randomSong = getRandomSong(janu.songs[year]);
