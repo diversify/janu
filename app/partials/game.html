@@ -9,7 +9,7 @@
 </script>
 
 <div id="game-header"><h2>ROUND {{round}} / 10</h2></div>
-
+<input type="button" value = "Add Song" ng-click="addSong()">
 <div id="game-circle">
 	<div id="question">
 		<h2 id="artist"></h2>
@@ -18,7 +18,9 @@
 </div>
 
 <div id="timeline">
-	<div class="timeline-span"></div><div id="current-song-circle"></div><div class="timeline-span"></div><div class="timeline-span"></div>
+	<div ng-repeat-start="song in timelineSongs" class="timeline-span"></div>
+	<div ng-repeat-end class="song-circle"></div>
+	<div class="timeline-span"></div>
 </div>
 
 
