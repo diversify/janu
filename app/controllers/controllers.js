@@ -35,7 +35,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       if (timeLeft <= 0) {
         checkAnswer();
       }
-    }, 1);
+    }, 1000);
   }
 
   $scope.finalSpanSelected = function () {
@@ -95,12 +95,13 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       if ($scope.currentYear >= _.last($scope.timelineSongs).year)
         answerSuccess();
     } else {
-      if ($scope.currentYear >= $scope.timelineSongs[ans-1] &&
-          $scope.currentYear <= $scope.timelineSongs[ans])
+      if ($scope.currentYear >= $scope.timelineSongs[ans-1].year &&
+          $scope.currentYear <= $scope.timelineSongs[ans].year)
         answerSuccess();
     }
 
-    fetchNewSong();  
+    newSong = fetchNewSong();  
+    playSong(newSong);
   }
 
   function answerSuccess() {
