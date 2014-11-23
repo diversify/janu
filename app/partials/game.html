@@ -1,12 +1,13 @@
-<!--<script type="text/javascript">
+<script type="text/javascript">
 	$('#timeline').mouseenter(function(e){
 		$("#current-song-circle").css({width:'80px', height:'80px'});
 	});
 
 	$('#timeline').mousemove(function(e){
-	    $("#current-song-circle").css({left:e.pageX});
+		if(!markerSet)
+	    	$("#current-song-circle").css({left:e.pageX});
 	});
-</script>-->
+</script>
 
 <div id="game-header"><h2><a href="/">BACK</a></div>
 
@@ -22,10 +23,11 @@
 </div>
 
 <div id="timeline">
+	<div id="current-song-circle"></div>
 	<div ng-repeat-start="song in timelineSongs" class="timeline-span {{isSelected($index)}}" style="width: {{timelineSpanWidth()}}%" ng-click="selectSpan($index)"></div>
   <div ng-repeat-end class="song-circle">{{song.year}}</div>
 	<div id="timeline-base-span" class="{{isSelected(-1)}}" ng-click="selectSpan(-1)"></div>
 </div>
 
-<div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em></h2><h2 id="round">CORRECT GUESSES {{timelineSongs.length-1}}</h2></div>
+<div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em></h2><h2 id="round">CORRECT GUESSES {{timelineSongs.length}}</h2></div>
 

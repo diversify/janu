@@ -18,9 +18,8 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.currentAnswer = undefined;
     $scope.score = {};
     $scope.score.total = 0;
-
     // add a song, ignore what it is
-    addSongToTimeline(fetchNewSong());
+    //addSongToTimeline(fetchNewSong());
 
     // this is the first song the user guesses
     firstSong = fetchNewSong();
@@ -47,6 +46,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
   $scope.selectSpan = function (index) {
     $scope.currentAnswer = index;
+    markerSet = true;
   }
 
 	$scope.timelineSpanWidth = function (){
@@ -80,6 +80,9 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     if (ans === undefined) {
       // user hasn't chosen an answer, should skip to bottom
     }
+    else if($scope.timelineSongs.length==0){
+    	answerSuccess();
+    }
     else if (ans === 0) {
       if ($scope.currentYear <= $scope.timelineSongs[0].year)
         answerSuccess();
@@ -94,6 +97,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
     newSong = fetchNewSong();  
     playSong(newSong);
+    markerSet = false;
   }
 
   function answerSuccess() {
