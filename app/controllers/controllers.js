@@ -23,7 +23,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.timeLeft = 15;
     $scope.score.total = 0;
     $scope.markerSet = false;
-    $scope.combiplyer = 0;
+    $scope.comboplyer = 1;
 
     // this is the first song the user guesses
     firstSong = fetchNewSong();
@@ -164,6 +164,8 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       if ($scope.currentYear >= $scope.timelineSongs[ans-1].year &&
           $scope.currentYear <= $scope.timelineSongs[ans].year)
         answerSuccess();
+      else
+      	$scope.comboplyer = 1;
     }
 
     //clear the selection
@@ -178,8 +180,8 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
   function answerSuccess() {
     addSongToTimeline($scope.currentSong); 
-    $scope.score.total += $scope.score.round;
-  	$scope.combiplyer++;
+    $scope.score.total += ($scope.score.round * $scope.comboplyer);
+  	$scope.comboplyer++;
   }
 
 }]);
