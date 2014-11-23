@@ -285,7 +285,6 @@ button {
 }
 
 .summary-song {
-    border: 5px solid;
     padding: ;
     width: 24%;
     margin: 0.5%;
@@ -296,9 +295,9 @@ button {
 
 
 .correct {
-    border-color: #6fc076;
+    border: 5px solid #6fc076;
 } 
 
 .wrong {
-    border-color: #da3e2f;
+    border: 5px solid #da3e2f;
 }
