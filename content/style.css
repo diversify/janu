@@ -77,17 +77,55 @@ label {
     margin: auto;
 }
 
-#game-circle {
+#game-content {
+    height: 300px;
+    width: 300px;
+    margin: 20px auto 60px;
+    position: relative;
+    overflow: visible;
+}
+
+#album-cover {
     height: 300px;
     width: 300px;
     border: 8px solid rgba(255,255,255,0.3);
     border-radius: 50%;
-    margin: 20px auto 50px;
     position: relative;
-    overflow: visible;
-    padding-top: 50px;
-    background: url(image/audiowave-gif.gif);
-    background-size: cover;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+    z-index: 4;
+}
+
+.rings-in-back { 
+    padding: 15px;
+    font-size: 28px;
+    width: 500px;
+    height: 72px;
+    border-radius: 50% 50% 0 0;
+    -moz-border-radius: 50% 50% 0 0;
+    -webkit-border-radius: 50% 50% 0 0;
+    border-top: 4px solid #ff9000;
+    margin: auto;
+    position: relative;
+    top: 177px;
+    margin-bottom: -75px;
+    z-index: 3;
+}
+
+.rings-in-front {
+    padding: 15px;
+    font-size: 28px;
+    width: 500px;
+    height: 72px;
+    border-radius: 50% 50% 0 0;
+    -moz-border-radius: 50% 50%;
+    -webkit-border-radius: 50% 50%;
+    border-bottom: 4px solid #ff9000;
+    margin: auto;
+    margin-bottom: -40px;
+    position: relative;
+    top: 177px;
+    z-index: 5;
 }
 
 #timer {
@@ -96,14 +134,19 @@ label {
     font-size: 60px;
 }
 
-#question {
+.question-and-timer {
     text-align: center;
-    position: relative;
-    padding: 15px;
-    background: #ff9000;
+    position: absolute;
     z-index: 5;
     font-size: 28px;
-    margin-top: 100px;
+    left: 32px;
+    top: 100px;
+}
+
+#question {
+    padding: 15px;
+    background: #ff9000;
+    font-size: 28px;
 }
 
 #timeline {
@@ -212,4 +255,23 @@ label {
 #start h2 {
     margin-bottom: 20px;
     text-align: center;
+}
+
+.summary-song {
+    border: 5px solid;
+    padding: ;
+    width: 24%;
+    margin: 0.5%;
+    padding: 25px;
+    background: #eee;
+    float: left;
+}
+
+
+.correct {
+    border-color: #6fc076;
+} 
+
+.wrong {
+    border-color: #da3e2f;
 }

@@ -11,8 +11,11 @@
 <div id="game-header"><h2><a href="/">BACK</a></div>
 
 <!-- <input type="button" value = "Add Song" ng&#45;click="addSong()"> -->
-<div id="game-circle">
-  <div ng-if="gameInSession">
+<div class="rings-in-back"></div>
+<div class="rings-in-front"></div>
+<div id="game-content">
+  <img src="content/image/audiowave-gif.gif" id="album-cover" alt="album cover" />
+  <div ng-if="gameInSession" class="question-and-timer">
   	<h2 id="timer"><strong>{{score.round}}</strong></h2>
     <h2 id="question">Which timespan?</h2>
   </div>

@@ -23,6 +23,11 @@
                     controller: 'januController',
                     templateUrl: '/app/partials/start.html'
                 })
+            .when('/win', 
+                {
+                    controller: 'januController',
+                    templateUrl: '/app/partials/win.html'
+                })
             .when('/end', 
                 {
                     controller: 'januController',
