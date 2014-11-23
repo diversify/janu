@@ -2,6 +2,8 @@
 
 This is a game that will help you broaden your taste in music.
 
+Checkout the demo at: http://saturn-diversify.herokuapp.com
+
 # How to get started
 
 ```bash
