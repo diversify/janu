@@ -23,6 +23,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.timeLeft = 15;
     $scope.score.total = 0;
     $scope.markerSet = false;
+    $scope.combiplyer = 0;
 
     // this is the first song the user guesses
     firstSong = fetchNewSong();
@@ -178,6 +179,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   function answerSuccess() {
     addSongToTimeline($scope.currentSong); 
     $scope.score.total += $scope.score.round;
+  	$scope.combiplyer++;
   }
 
 }]);
