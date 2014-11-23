@@ -2,10 +2,8 @@ var audio = new Audio();
 var TIME_PER_SONG = 15.0;
 
 function playSong(song){
-  console.log(song.song_id);
   previewURL(song.song_id, function (preview_url) {
     audio.src = preview_url;
-    console.log(preview_url);
     var skipped = false;
     audio.addEventListener("canplay",function(){
       if(!skipped){
