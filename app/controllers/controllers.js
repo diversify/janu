@@ -34,7 +34,6 @@ app.controller('januController', ['$scope','$http','$interval','$timeout', funct
 
     // start the timer
     $interval(function(){
-      console.log($scope.roundActive);
       timeLeft = getTimeLeft();
       if(timeLeft<16){
     		$scope.timeLeft = timeLeft; 
@@ -48,6 +47,7 @@ app.controller('januController', ['$scope','$http','$interval','$timeout', funct
     	else
     		$scope.timeLeft = 15;
       if (timeLeft <= 0) {
+        $scope.timeLeft = 0;
       	$('#album-cover').removeClass('animate-blur');
         $('#album-cover').removeClass('no-blur');
         if ($scope.roundActive && !musicLoading()) {
@@ -156,7 +156,7 @@ app.controller('januController', ['$scope','$http','$interval','$timeout', funct
 		janu.timelineYears.sort();
   }
 
-  function checkAnswer() {
+  function checkAnswerInternal() {
     ans = $scope.currentAnswer ;
 
     if (ans === undefined || ans === null) {
@@ -180,12 +180,20 @@ app.controller('januController', ['$scope','$http','$interval','$timeout', funct
     //clear the selection
     $scope.currentAnswer = null;
 
+    // new song
+    newSong = fetchNewSong();
+    playSong(newSong);
+    $scope.markerSet = false;
+    $scope.score.round = 0;
+    $scope.roundActive = true;
+  }
+
+  function checkAnswer() {
+    $scope.roundActive = false;
+    $("#song-details").fadeIn(500);
     setTimeout(function () {
-      newSong = fetchNewSong();
-      playSong(newSong);
-      $scope.markerSet = false;
-      $scope.score.round = 0;
-      $scope.roundActive = true;
+      $("#song-details").fadeOut(500);
+      checkAnswerInternal();
     }, 3000);
   }
 
