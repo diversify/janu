@@ -325,7 +325,7 @@ label {
     float: right;
 }
 
-#start {
+#start, #win {
     background: rgba(255, 255, 255,0.9);
     width: 500px;
     margin: auto;
@@ -338,6 +338,11 @@ label {
     border-radius: 15px;
     border-bottom: 5px solid rgba(0,0,0,0.2);
     padding-bottom: 45px;
+}
+
+#win {
+    width: 800px;
+    top: 160px;
 }
 
 #start #logo, #win #logo {
