@@ -219,15 +219,20 @@ label {
     margin-left: -30px;
 }
 
-#start-song-circle {
-    position: relative;
-    float: left;
-    margin-left: 0px;
+#startpoint, #startpoint-bottom, #endpoint, #endpoint-bottom {
+    position: absolute;
+    color: #f5f5f5;
+    font-size: 24px;
+    padding: 10px;
 }
 
-#end-song-circle {
-    position: relative;
-    float: right;
+#startpoint {
+    left: 0px;
+}
+
+#endpoint {
+    position: absolute;
+    right: 0px;
 }
 
 .song-cirlce:hover {
