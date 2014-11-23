@@ -97,8 +97,18 @@ label {
     border-radius: 50%;
     position: relative;
     -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
     filter: blur(10px);
     z-index: 4;
+}
+.no-blur{
+    -webkit-filter: blur(0px)!important;
+    -moz-filter: blur(0px)!important;
+    filter: blur(0px)!important;
+}
+.animate-blur{
+    -webkit-transition:17s -webkit-filter linear!important;
+    transition:-webkit-filter 17s linear!important;
 }
 
 .rings-in-back { 

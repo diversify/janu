@@ -7,7 +7,7 @@
 <div id="song-details"></div>
 
 <div id="game-content" ng-init="init()">
-  <img ng-src="{{currentSong.image_url !== undefined && currentSong.image_url || content/images/audiowave-gif.gif}}" id="album-cover" alt="album cover" />
+  <img ng-src="{{currentSong.image_url !== null && currentSong.image_url || 'content/image/audiowave-gif.gif'}}" id="album-cover" alt="album cover" class="animate-blur"/>
   <div ng-if="gameInSession" class="question-and-timer">
   	<h2 id="timer"><strong>{{timeLeft}}</strong></h2>
     <h2 id="question">Which timespan?</h2>

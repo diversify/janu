@@ -26,6 +26,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
     // this is the first song the user guesses
     firstSong = fetchNewSong();
+    $('#album-cover').addClass('no-blur'); 
     playSong(firstSong);
 
     $scope.gameInSession = true;
@@ -33,11 +34,20 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     // start the timer
     $interval(function(){
       timeLeft = getTimeLeft();
-      	if(timeLeft<16)
+      	if(timeLeft<16){
     		$scope.timeLeft = timeLeft; 
+    		if(timeLeft==15){
+    			$('#album-cover').addClass('animate-blur');
+    		}
+    		if(timeLeft==14){
+    			$('#album-cover').addClass('no-blur');
+    		}
+      	}
     	else
     		$scope.timeLeft = 15;
       if (timeLeft <= 0) {
+      	$('#album-cover').removeClass('animate-blur');
+    	$('#album-cover').removeClass('no-blur');
         checkAnswer();
       }
     }, 1000);
@@ -158,10 +168,11 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     //clear the selection
     $scope.currentAnswer = null;
 
-    newSong = fetchNewSong();  
+    newSong = fetchNewSong();
     playSong(newSong);
     $scope.markerSet = false;
     $scope.score.round = 0;
+
   }
 
   function answerSuccess() {
