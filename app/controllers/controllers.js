@@ -198,7 +198,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.roundActive = false;
     $("#song-details").fadeIn(500);
     setTimeout(function () {
-      $("#song-details").fadeOut(500);
+      $("#song-details").hide();
       newSong = fetchNewSong();
       playSong(newSong);
       $scope.markerSet = false;
