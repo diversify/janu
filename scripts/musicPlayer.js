@@ -1,9 +1,11 @@
 var audio = new Audio();
+audio.loading = false;
 var TIME_PER_SONG = 20.0;
 var TIME_BETWEEN_ROUNDS = 5.0;
 var TIME_PER_ROUND = TIME_PER_SONG - TIME_BETWEEN_ROUNDS;
 
 function playSong(song){
+  audio.loading = true;
   previewURL(song.song_id, function (preview_url) {
     audio.src = preview_url;
     var skipped = false;
@@ -14,6 +16,7 @@ function playSong(song){
       }
     });
     audio.play();
+    audio.loading = false;
   });
 }
 
@@ -38,9 +41,6 @@ function getTimeLeft() {
   }
 }
 
-function isPlaying() {
-  if (audio.duration)
-    return true;
-  else
-    return false;
+function musicLoading() {
+  return audio.loading;
 }
