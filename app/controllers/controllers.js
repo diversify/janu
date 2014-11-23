@@ -15,6 +15,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   // start game
   $scope.startGame = function () {
     // reset all game variables
+    $scope.timeLeft = 15;
     $scope.timelineSongs = [];
     $scope.timelineYears = [];
     $scope.currentSong = undefined;
@@ -26,9 +27,9 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.markerSet = false;
     $scope.comboplyer = 1;
     $scope.roundActive = false;
-
     
     // this is the first song the user guesses
+    $("#song-details").hide();
     firstSong = fetchNewSong();
     $('#album-cover').addClass('no-blur'); 
     playSong(firstSong);
