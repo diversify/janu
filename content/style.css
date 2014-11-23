@@ -377,6 +377,13 @@ button {
     float: left;
 }
 
+#combo {
+    position: absolute;
+    bottom: 100px;
+    left: 65px;
+    opacity: 0.6;
+}
+
 .correct {
     border-color: #6fc076!important;
 } 
