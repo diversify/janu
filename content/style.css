@@ -13,6 +13,11 @@ html, body {
     font-family: 'Questrial', georgia;
     background: #aaa url(image/main-wallpaper.jpg);
     background-size: cover;
+    -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 
 body {
@@ -288,9 +293,9 @@ button {
 
 
 .correct {
-    border-color: #6fc076;
+    border-color: #6fc076!important;
 } 
 
 .wrong {
-    border-color: #da3e2f;
+    border-color: #da3e2f !important;
 }

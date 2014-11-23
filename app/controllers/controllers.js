@@ -33,7 +33,10 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     // start the timer
     $interval(function(){
       timeLeft = getTimeLeft();
-    	$scope.timeLeft = timeLeft; 
+      	if(timeLeft<16)
+    		$scope.timeLeft = timeLeft; 
+    	else
+    		$scope.timeLeft = 15;
       if (timeLeft <= 0) {
         checkAnswer();
       }
