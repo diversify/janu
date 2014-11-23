@@ -23,8 +23,6 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.timeLeft = 15;
     $scope.score.total = 0;
     $scope.markerSet = false;
-    // add a song, ignore what it is
-    //addSongToTimeline(fetchNewSong());
 
     // this is the first song the user guesses
     firstSong = fetchNewSong();

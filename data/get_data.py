@@ -63,6 +63,9 @@ def track_object(obj):
     if obj['preview_url']:
         res['preview_url'] = obj['preview_url']
 
+    if obj['album']['images']:
+        res['image_url'] = obj['album']['images'][0]['url']
+
     return res
 
 def get_billboard_playlist(year):
@@ -158,6 +161,6 @@ def dump_to_file(j, filename):
 if __name__ == '__main__':
 
     a = authorize()
-    data = get_songs_for_years(range(1950, 2014+1), a, from_playlists=True)
+    data = get_songs_for_years(range(1957, 2014+1), a, from_playlists=True)
     data = { k: data.get(k) for k in data.keys() if len(data.get(k)) != 0 }
     dump_to_file(data, 'output.json')
