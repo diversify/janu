@@ -18,6 +18,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.currentAnswer = undefined;
     $scope.score = {};
     $scope.score.total = 0;
+    $scope.markerSet = false;
     // add a song, ignore what it is
     //addSongToTimeline(fetchNewSong());
 
@@ -45,9 +46,23 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   }
 
   $scope.selectSpan = function (index) {
-    $scope.currentAnswer = index;
-    markerSet = true;
+  	if(index === $scope.currentAnswer){
+  		$scope.markerSet = false;
+  		$scope.currentAnswer = undefined;
+  	}
+  	else{
+  		$scope.markerSet = true;
+  		$scope.currentAnswer = index;
+  	}
   }
+
+  	$scope.moveMarker = function(e){
+  		if(!$scope.markerSet)
+	    	$("#current-song-circle").css({left:e.pageX});
+	};
+	$scope.addMarkerToGUI = function(e){
+		$("#current-song-circle").css({width:'80px', height:'80px'});
+	};
 
 	$scope.timelineSpanWidth = function (){
 		return calculateWidths(janu.timelineSongs.length+1)-0.2;
@@ -100,7 +115,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
     newSong = fetchNewSong();  
     playSong(newSong);
-    markerSet = false;
+    $scope.markerSet = false;
   }
 
   function answerSuccess() {
