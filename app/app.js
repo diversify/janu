@@ -16,7 +16,7 @@
             .when('/', 
                 {
                     controller: 'januController',
-                    templateUrl: '/app/partials/game.html'
+                    templateUrl: '/app/partials/start.html'
                 })
             .when('/start', 
                 {
