@@ -1,7 +1,7 @@
 
 var app = angular.module('janu');
 
-app.controller('januController', ['$scope','$http','$interval', function ($scope,$http,$interval){
+app.controller('januController', ['$scope','$http','$interval','$location', function ($scope,$http,$interval,$location){
 	var janu = $scope;
 
 
@@ -212,6 +212,9 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       $('#album-cover').removeClass('correct');
       $('#album-cover').removeClass('wrong');
       $("#song-details").hide();
+      if($scope.timelineSongs.length===10){
+        $location.path('/end?'+$scope.score.total;);
+      }
       newSong = fetchNewSong();
       playSong(newSong);
       $scope.markerSet = false;
