@@ -160,6 +160,7 @@ label {
     text-align: center;
     color: #f5f5f5;
     font-size: 60px;
+    text-shadow: #202020 0px 0px 5px;
 }
 
 .question-and-timer {
