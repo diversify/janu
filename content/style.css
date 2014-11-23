@@ -183,6 +183,10 @@ label {
     background: #c66 !important;
 }
 
+.timeline-hover {
+    background: green !important;
+}
+
 #current-song-circle, .song-circle {
     height: 0px;
     width: 0px;

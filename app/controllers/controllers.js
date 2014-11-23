@@ -45,15 +45,15 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       return ""
   }
 
+  $scope.markerHovers = function (index) {
+    if (index === $scope.timelineHoverIndex)
+      return "timeline-hover";
+    else
+      return "";
+  }
 
   $scope.placeMarker = function () {
-    //get center x of marker and width of timeline
-		$songCircle = $("#current-song-circle");
-    centerX = $songCircle.offset().left + $songCircle.width() / 2;
-    width = $("#timeline").width();
-
-    //calculate index
-    index = Math.floor(($scope.timelineSongs.length+1) * (centerX / width))
+    index = markerIndex();
 
     //if it's the final span, then represent as -1
     if (index === $scope.timelineSongs.length)
@@ -62,9 +62,22 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     selectSpan(index);
   }
 
+  markerIndex = function () {
+    //get center x of marker and width of timeline
+		$songCircle = $("#current-song-circle");
+    centerX = $songCircle.offset().left + $songCircle.width() / 2;
+    width = $("#timeline").width();
+
+    //calculate index
+    return Math.floor(($scope.timelineSongs.length+1) * (centerX / width))
+  }
+
   $scope.moveMarker = function(e){
     if(!$scope.markerSet)
       $("#current-song-circle").css({left:e.pageX});
+
+    // update timeline-hover class of relevant span
+    $scope.timelineHoverIndex = markerIndex();
 	};
 
 	$scope.addMarkerToGUI = function(e){
