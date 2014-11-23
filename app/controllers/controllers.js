@@ -18,8 +18,6 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.currentAnswer = undefined;
     $scope.score = {};
     $scope.score.total = 0;
-    // add a song, ignore what it is
-    //addSongToTimeline(fetchNewSong());
 
     // this is the first song the user guesses
     firstSong = fetchNewSong();
