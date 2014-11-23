@@ -183,6 +183,10 @@ label {
     background: #c66 !important;
 }
 
+.timeline-hover {
+    background: green !important;
+}
+
 #current-song-circle, .song-circle {
     height: 0px;
     width: 0px;
@@ -191,12 +195,14 @@ label {
     background:#333;
     top: 50%;
     z-index: 5;
-    margin-top: -40px;
+    margin-top: -30px;
     margin-left: -40px;
     text-align: center;
     color: #f5f5f5;
     line-height: 60px;
     font-size: 21px;
+}
+.no-pointer-events{
     pointer-events:none;
 }
 
@@ -273,6 +279,9 @@ button {
 #start h2 {
     margin-bottom: 20px;
     text-align: center;
+}
+#padlock{
+    margin-top:14px;
 }
 
 .summary-song {

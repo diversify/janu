@@ -10,14 +10,13 @@
 </script>
 
 <div id="game-header"><h2><a href="/">BACK</a></div>
-
 <!-- <input type="button" value = "Add Song" ng&#45;click="addSong()"> -->
 <div class="rings-in-back"></div>
 <div class="rings-in-front"></div>
 <div id="game-content">
   <img src="content/image/audiowave-gif.gif" id="album-cover" alt="album cover" />
   <div ng-if="gameInSession" class="question-and-timer">
-  	<h2 id="timer"><strong>{{score.round}}</strong></h2>
+  	<h2 id="timer"><strong>{{timeLeft}}</strong></h2>
     <h2 id="question">Which timespan?</h2>
   </div>
   <div ng-if="!gameInSession">
@@ -26,10 +25,12 @@
 </div>
 
 <div id="timeline" ng-mousemove="moveMarker($event)" ng-mouseenter="addMarkerToGUI($event)" ng-click="placeMarker()">
-	<div id="current-song-circle"></div>
-	<div ng-repeat-start="song in timelineSongs" class="timeline-span {{isSelected($index)}}" style="width: {{timelineSpanWidth()}}%"></div>
+	<div id="current-song-circle" class="{{markerSet && '' || 'no-pointer-events'}}">
+		<img height="30px" id="padlock" ng-src="{{markerSet && 'content/image/lock.png' || 'content/image/unlock.png'}}"/>
+	</div>
+  <div ng-repeat-start="song in timelineSongs" class="timeline-span {{isSelected($index)}} {{markerHovers(index)}}" style="width: {{timelineSpanWidth()}}%"></div>
   <div ng-repeat-end class="song-circle">{{song.year}}</div>
-	<div id="timeline-base-span" class="{{isSelected(-1)}}"></div>
+	<div id="timeline-base-span" class="{{isSelected(-1)}} {{markerHovers(-1)}}"></div>
 </div>
 
 <div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em></h2><h2 id="round">CORRECT GUESSES {{timelineSongs.length}}</h2></div>

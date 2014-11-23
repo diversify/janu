@@ -24,7 +24,7 @@ function previewURL(songId, callback) {
 
 function getTimeLeft(){
 	if(audio.duration)
-		return Math.round(audio.duration-audio.currentTime);
+		return Math.ceil(audio.duration-audio.currentTime);
 	else
 		return 0;
 }
