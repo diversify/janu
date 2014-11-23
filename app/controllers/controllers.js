@@ -180,16 +180,22 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     else if (ans === 0) {
       if ($scope.currentYear <= $scope.timelineSongs[0].year)
         answerSuccess();
+      else{
+        $scope.comboplyer = 1;
+        $("#album-cover").addClass('wrong');
+      }
     } else if (ans === -1) {
       if ($scope.currentYear >= _.last($scope.timelineSongs).year)
         answerSuccess();
-    } else {
-      if ($scope.currentYear >= $scope.timelineSongs[ans-1].year &&
-          $scope.currentYear <= $scope.timelineSongs[ans].year){
-        answerSuccess();
-      }
       else{
-      	$scope.comboplyer = 1;
+        $scope.comboplyer = 1;
+        $("#album-cover").addClass('wrong');
+      }
+    } else {
+      if ($scope.currentYear >= $scope.timelineSongs[ans-1].year && $scope.currentYear <= $scope.timelineSongs[ans].year){
+        answerSuccess();
+      }else{
+        $scope.comboplyer = 1;
         $("#album-cover").addClass('wrong');
       }
 
@@ -201,11 +207,11 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     // new song
     $scope.roundActive = false;
     $("#song-details").fadeIn(500);
-    setTimeout(function () {
-      $("#song-details").fadeOut(500);
+    setTimeout(function () {      
       $('#album-cover').removeClass('no-blur');
       $('#album-cover').removeClass('correct');
       $('#album-cover').removeClass('wrong');
+      $("#song-details").hide();
       newSong = fetchNewSong();
       playSong(newSong);
       $scope.markerSet = false;
