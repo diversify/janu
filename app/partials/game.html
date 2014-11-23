@@ -4,7 +4,11 @@
 <div class="rings-in-back"></div>
 <div class="rings-in-front"></div>
 
-<div id="song-details"></div>
+<div id="song-details">
+	<h2 class="title">{{currentSong.name}}</h2>
+	<h2>{{currentSong.artist_name}}</h2>
+	<h2>{{currentSong.year}}</h2>
+</div>
 
 <div id="game-content" ng-init="init()">
   <img ng-src="{{currentSong.image_url !== null && currentSong.image_url || 'content/image/audiowave-gif.gif'}}" id="album-cover" alt="album cover" class="animate-blur"/>
