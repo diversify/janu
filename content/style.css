@@ -241,12 +241,25 @@ label {
 
 #start {
     background: rgba(0,0,0,0.3);
-    width: 800px;
+    width: 500px;
     height: 460px;
     margin: auto;
     top: 50px;
     position: relative;
     padding-top: 100px;
+    text-align: center;
+    color: #202020;
+}
+
+button {
+    padding: 15px;
+    width: 90%;
+    background: #ffc000;
+    border: none;
+    font-size: 34px;
+    color: #f5f5f5;
+    border-bottom: 5px #c88b53 solid;
+    border-radius: 15px;
 }
 
 #start h1 {
