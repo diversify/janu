@@ -28,9 +28,9 @@
 	<div id="current-song-circle" class="{{markerSet && '' || 'no-pointer-events'}}">
 		<img height="30px" id="padlock" ng-src="{{markerSet && 'content/image/lock.png' || 'content/image/unlock.png'}}"/>
 	</div>
-	<div ng-repeat-start="song in timelineSongs" class="timeline-span {{isSelected($index)}}" style="width: {{timelineSpanWidth()}}%"></div>
+  <div ng-repeat-start="song in timelineSongs" class="timeline-span {{isSelected($index)}} {{markerHovers(index)}}" style="width: {{timelineSpanWidth()}}%"></div>
   <div ng-repeat-end class="song-circle">{{song.year}}</div>
-	<div id="timeline-base-span" class="{{isSelected(-1)}}"></div>
+	<div id="timeline-base-span" class="{{isSelected(-1)}} {{markerHovers(-1)}}"></div>
 </div>
 
 <div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em></h2><h2 id="round">CORRECT GUESSES {{timelineSongs.length}}</h2></div>
