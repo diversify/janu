@@ -13,7 +13,7 @@
 
 <div id="game-circle">
   <div ng-if="gameInSession">
-  	<h2 id="timer"><strong>{{score.round}}</strong></h2>
+  	<h2 id="timer"><strong>{{timeLeft}}</strong></h2>
     <h2 id="question">Which timespan?</h2>
   </div>
   <div ng-if="!gameInSession">
@@ -22,7 +22,9 @@
 </div>
 
 <div id="timeline" ng-mousemove="moveMarker($event)" ng-mouseenter="addMarkerToGUI($event)">
-	<div id="current-song-circle"></div>
+	<div id="current-song-circle" class="{{markerSet && '' || 'no-pointer-events'}}">
+		<img height="30px" id="padlock" ng-src="{{markerSet && 'content/image/lock.png' || 'content/image/unlock.png'}}"/>
+	</div>
 	<div ng-repeat-start="song in timelineSongs" class="timeline-span {{isSelected($index)}}" style="width: {{timelineSpanWidth()}}%" ng-click="selectSpan($index)"></div>
   <div ng-repeat-end class="song-circle">{{song.year}}</div>
 	<div id="timeline-base-span" class="{{isSelected(-1)}}" ng-click="selectSpan(-1)"></div>

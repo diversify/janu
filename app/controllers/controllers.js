@@ -17,6 +17,8 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.currentSong = undefined;
     $scope.currentAnswer = undefined;
     $scope.score = {};
+    $scope.score.round = 0;
+    $scope.timeLeft = 15;
     $scope.score.total = 0;
     $scope.markerSet = false;
     // add a song, ignore what it is
@@ -31,7 +33,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     // start the timer
     $interval(function(){
       timeLeft = getTimeLeft();
-    	$scope.score.round = timeLeft; 
+    	$scope.timeLeft = timeLeft; 
       if (timeLeft <= 0) {
         checkAnswer();
       }
@@ -49,10 +51,12 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   	if(index === $scope.currentAnswer){
   		$scope.markerSet = false;
   		$scope.currentAnswer = undefined;
+  		$scope.score.round = 0;
   	}
   	else{
   		$scope.markerSet = true;
   		$scope.currentAnswer = index;
+  		$scope.score.round = getTimeLeft();
   	}
   }
 
@@ -61,9 +65,8 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 	    	$("#current-song-circle").css({left:e.pageX});
 	};
 	$scope.addMarkerToGUI = function(e){
-		$("#current-song-circle").css({width:'80px', height:'80px'});
+		$("#current-song-circle").css({width:'60px', height:'60px'});
 	};
-
 	$scope.timelineSpanWidth = function (){
 		return calculateWidths(janu.timelineSongs.length+1)-0.2;
 	};
@@ -120,7 +123,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
   function answerSuccess() {
     addSongToTimeline($scope.currentSong); 
-    $scope.score.total += 10;
+    $scope.score.total += $scope.score.round;
   }
 
 }]);
