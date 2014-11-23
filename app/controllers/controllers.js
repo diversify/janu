@@ -61,7 +61,6 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       if (timeLeft <= 0) {
         $scope.timeLeft = 0;
       	$('#album-cover').removeClass('animate-blur');
-        $('#album-cover').removeClass('no-blur');
         if ($scope.roundActive && !musicLoading()) {
           $scope.roundActive = false;
           checkAnswer();
@@ -173,6 +172,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 
     if (ans === undefined || ans === null) {
       $scope.comboplyer = 1;
+      $("#album-cover").addClass('wrong');
     }
     else if($scope.timelineSongs.length==0){
     	answerSuccess();
@@ -185,10 +185,14 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
         answerSuccess();
     } else {
       if ($scope.currentYear >= $scope.timelineSongs[ans-1].year &&
-          $scope.currentYear <= $scope.timelineSongs[ans].year)
+          $scope.currentYear <= $scope.timelineSongs[ans].year){
         answerSuccess();
-      else
+      }
+      else{
       	$scope.comboplyer = 1;
+        $("#album-cover").addClass('wrong');
+      }
+
     }
 
     //clear the selection
@@ -199,6 +203,9 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $("#song-details").fadeIn(500);
     setTimeout(function () {
       $("#song-details").fadeOut(500);
+      $('#album-cover').removeClass('no-blur');
+      $('#album-cover').removeClass('correct');
+      $('#album-cover').removeClass('wrong');
       newSong = fetchNewSong();
       playSong(newSong);
       $scope.markerSet = false;
@@ -208,6 +215,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   }
 
   function answerSuccess() {
+    $("#album-cover").addClass('correct');
     addSongToTimeline($scope.currentSong); 
     $scope.score.total += ($scope.score.round * $scope.comboplyer);
   	$scope.comboplyer++;
