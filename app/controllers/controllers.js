@@ -34,6 +34,7 @@ app.controller('januController', ['$scope','$http','$interval','$timeout', funct
 
     // start the timer
     $interval(function(){
+      console.log($scope.roundActive);
       timeLeft = getTimeLeft();
       if(timeLeft<16){
     		$scope.timeLeft = timeLeft; 
@@ -49,7 +50,7 @@ app.controller('januController', ['$scope','$http','$interval','$timeout', funct
       if (timeLeft <= 0) {
       	$('#album-cover').removeClass('animate-blur');
         $('#album-cover').removeClass('no-blur');
-        if ($scope.roundActive) {
+        if ($scope.roundActive && !musicLoading()) {
           $scope.roundActive = false;
           checkAnswer();
         }
@@ -80,6 +81,9 @@ app.controller('januController', ['$scope','$http','$interval','$timeout', funct
   }
 
   $scope.placeMarker = function () {
+    if (!$scope.roundActive)
+      return;
+
     index = markerIndex();
 
     //if it's the final span, then represent as -1
@@ -176,11 +180,13 @@ app.controller('januController', ['$scope','$http','$interval','$timeout', funct
     //clear the selection
     $scope.currentAnswer = null;
 
-    newSong = fetchNewSong();
-    playSong(newSong);
-    $scope.markerSet = false;
-    $scope.score.round = 0;
-    $scope.roundActive = true;
+    setTimeout(function () {
+      newSong = fetchNewSong();
+      playSong(newSong);
+      $scope.markerSet = false;
+      $scope.score.round = 0;
+      $scope.roundActive = true;
+    }, 3000);
   }
 
   function answerSuccess() {
