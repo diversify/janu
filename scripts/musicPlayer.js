@@ -1,5 +1,7 @@
 var audio = new Audio();
-var TIME_PER_SONG = 15.0;
+var TIME_PER_SONG = 20.0;
+var TIME_BETWEEN_ROUNDS = 5.0;
+var TIME_PER_ROUND = TIME_PER_SONG - TIME_BETWEEN_ROUNDS;
 
 function playSong(song){
   previewURL(song.song_id, function (preview_url) {
@@ -7,12 +9,16 @@ function playSong(song){
     var skipped = false;
     audio.addEventListener("canplay",function(){
       if(!skipped){
-        audio.currentTime = 30.0-TIME_PER_SONG;
+        audio.currentTime = 30.0 - TIME_PER_SONG;
         skipped=true;
       }
     });
     audio.play();
   });
+}
+
+function stopSong () {
+  audio.stop();
 }
 
 function previewURL(songId, callback) {
@@ -22,9 +28,19 @@ function previewURL(songId, callback) {
   });
 }
 
-function getTimeLeft(){
-	if(audio.duration)
-		return Math.ceil(audio.duration-audio.currentTime);
-	else
+// get the time left in round
+function getTimeLeft() {
+	if (audio.duration) {
+    return Math.ceil(audio.duration - audio.currentTime - TIME_BETWEEN_ROUNDS);
+  }
+	else {
 		return 0;
+  }
+}
+
+function isPlaying() {
+  if (audio.duration)
+    return true;
+  else
+    return false;
 }
