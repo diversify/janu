@@ -77,7 +77,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   function checkAnswer() {
     ans = $scope.currentAnswer ;
 
-    if (ans === undefined) {
+    if (ans === undefined || ans === null) {
       // user hasn't chosen an answer, should skip to bottom
     }
     else if($scope.timelineSongs.length==0){
