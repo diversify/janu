@@ -27,6 +27,15 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.markerSet = false;
     $scope.comboplyer = 1;
     $scope.roundActive = false;
+
+    var loopImages = function(){
+
+         $('#combo-div').fadeIn(1500, function(){
+
+                   $('#combo-div').fadeOut(1500, loopImages);           
+         });
+    }
+    loopImages();
     
     // this is the first song the user guesses
     $("#song-details").hide();

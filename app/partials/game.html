@@ -7,7 +7,7 @@
 <div id="song-details" class="hidden">
 	<h2 class="title">{{currentSong.name}}</h2>
 	<h2>{{currentSong.artist_name}}</h2>
-	<h2>{{currentSong.year}}</h2>
+	<h2><strong>{{currentSong.year}}</strong></h2>
 </div>
 
 <div id="game-content" ng-init="init()">
@@ -32,6 +32,6 @@
 </div>
 
 <div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em><em class="emergency">{{(score.round!=0 && ' + ' + score.round + (' x ' + comboplyer)|| '')}}</em></h2><h2 id="round">CORRECT GUESSES {{timelineSongs.length}} / 10</h2></div>
-<img src="content/image/combo-icon.png" alt="COMBO" id="combo" />
+<div id="combo-div"><img src="content/image/combo-icon.png" alt="COMBO" id="combo" /><h2>{{comboplyer}}</h2></div>
 
 
