@@ -53,6 +53,10 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   }
 
   $scope.markerHovers = function (index) {
+    //if marker is set, nothing should have the hover class
+    if ($scope.markerSet)
+      return "";
+
     if (index === $scope.timelineHoverIndex)
       return "timeline-hover";
     else
@@ -84,7 +88,11 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       $("#current-song-circle").css({left:e.pageX});
 
     // update timeline-hover class of relevant span
-    $scope.timelineHoverIndex = markerIndex();
+    index = markerIndex();
+    //if it's the final span, then represent as -1
+    if (index === $scope.timelineSongs.length)
+      index = -1;
+    $scope.timelineHoverIndex = index;
 	};
 
 	$scope.addMarkerToGUI = function(e){

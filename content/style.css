@@ -184,7 +184,7 @@ label {
     z-index: 3;
 }
 
-.timeline-span:hover, #timeline-base-span:hover, .timeline-selected {
+.timeline-selected {
     background: #c66 !important;
 }
 
