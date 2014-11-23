@@ -72,6 +72,9 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     janu.timelineSongs = _.sortBy(janu.timelineSongs, function (song) { return parseInt(song.year); })
 		janu.timelineYears.push($scope.currentYear);
 		janu.timelineYears.sort();
+
+    //clear the selection
+    $scope.currentAnswer = null;
   }
 
   function checkAnswer() {
