@@ -45,7 +45,37 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       return ""
   }
 
-  $scope.selectSpan = function (index) {
+
+  $scope.placeMarker = function () {
+    //get center x of marker and width of timeline
+		$songCircle = $("#current-song-circle");
+    centerX = $songCircle.offset().left + $songCircle.width() / 2;
+    width = $("#timeline").width();
+
+    //calculate index
+    index = Math.floor(($scope.timelineSongs.length+1) * (centerX / width))
+
+    //if it's the final span, then represent as -1
+    if (index === $scope.timelineSongs.length)
+      index = -1;
+
+    selectSpan(index);
+  }
+
+  $scope.moveMarker = function(e){
+    if(!$scope.markerSet)
+      $("#current-song-circle").css({left:e.pageX});
+	};
+
+	$scope.addMarkerToGUI = function(e){
+		$("#current-song-circle").css({width:'80px', height:'80px'});
+	};
+
+	$scope.timelineSpanWidth = function (){
+		return calculateWidths(janu.timelineSongs.length+1)-0.2;
+	};
+
+  selectSpan = function (index) {
   	if(index === $scope.currentAnswer){
   		$scope.markerSet = false;
   		$scope.currentAnswer = undefined;
@@ -55,18 +85,6 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   		$scope.currentAnswer = index;
   	}
   }
-
-  	$scope.moveMarker = function(e){
-  		if(!$scope.markerSet)
-	    	$("#current-song-circle").css({left:e.pageX});
-	};
-	$scope.addMarkerToGUI = function(e){
-		$("#current-song-circle").css({width:'80px', height:'80px'});
-	};
-
-	$scope.timelineSpanWidth = function (){
-		return calculateWidths(janu.timelineSongs.length+1)-0.2;
-	};
 
   // returns a new song to play
   function fetchNewSong() {
