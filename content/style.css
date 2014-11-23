@@ -69,7 +69,20 @@ label {
 #game-header {
     background: #eee;
     width: 100%;
-    padding: 25px;
+    padding: 5px 15px;
+}
+
+#game-header #logo {
+    height: 60px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#game-header h2 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 34px;
+    padding-left: 10px;
 }
 
 .caret-down {
@@ -119,7 +132,7 @@ label {
     border-radius: 50% 50% 0 0;
     -moz-border-radius: 50% 50% 0 0;
     -webkit-border-radius: 50% 50% 0 0;
-    border-top: 4px solid #ff9000;
+    border-top: 8px solid #ff9000;
     margin: auto;
     position: relative;
     top: 177px;
@@ -135,7 +148,7 @@ label {
     border-radius: 50% 50%;
     -moz-border-radius: 50% 50%;
     -webkit-border-radius: 50% 50%;
-    border-bottom: 4px solid #ff9000;
+    border-bottom: 8px solid #ff9000;
     margin: auto;
     margin-bottom: -40px;
     position: relative;
@@ -171,7 +184,7 @@ label {
 }
 
 .title {
-    font-size: 24px;
+    font-size: 24px !important;
     font-weight: bold;
 }
 
@@ -226,10 +239,11 @@ label {
     margin-left: -200px;
     top: 380px;
     text-align: center;
+    font-size: 16px;
 }
 
 #song-details h2 {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 #current-song-circle, .song-circle {
@@ -323,10 +337,10 @@ label {
     font-size: 24px;
     border-radius: 15px;
     border-bottom: 5px solid rgba(0,0,0,0.2);
-    padding-bottom: 25px;
+    padding-bottom: 45px;
 }
 
-#start #logo {
+#start #logo, #win #logo {
     width: 250px;
     margin-bottom: 25px;
 }
@@ -343,7 +357,7 @@ button {
 }
 
 #start h1 {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     color: #202020;
 }
 

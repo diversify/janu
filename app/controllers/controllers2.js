@@ -1,17 +1,18 @@
 
 var app = angular.module('janu');
 
-app.controller('januController', ['$scope','$http','$interval', function ($scope,$http,$interval){
+app.controller('januController', ['$scope','$http','$interval','$timeout', function ($scope,$http,$interval,$timeout){
 	var janu = $scope;
 
-
-  $scope.gameInSession = false;
   $scope.init = function (){
   	$http.get('data/output.json').success(function(data){
 		janu.songs = data;
 		janu.startGame();
 	});
   };
+
+  $scope.gameInSession = false;
+
   // start game
   $scope.startGame = function () {
     // reset all game variables
@@ -24,10 +25,8 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.score.total = 0;
     $scope.gameInSession = true;
     $scope.markerSet = false;
-    $scope.comboplyer = 1;
     $scope.roundActive = false;
 
-    
     // this is the first song the user guesses
     firstSong = fetchNewSong();
     $('#album-cover').addClass('no-blur'); 
@@ -38,18 +37,18 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $interval(function(){
       timeLeft = getTimeLeft();
       if(timeLeft<16){
-        $scope.timeLeft = timeLeft; 
-        if(timeLeft==15){
-          $('#album-cover').addClass('animate-blur');
-        }
-        if(timeLeft==14){
-          $('#album-cover').addClass('no-blur');
-        }
+    		$scope.timeLeft = timeLeft; 
+    		if(timeLeft==15){
+    			$('#album-cover').addClass('animate-blur');
+    		}
+    		if(timeLeft==14){
+    			$('#album-cover').addClass('no-blur');
+    		}
       }
-      else
-        $scope.timeLeft = 15;
+    	else
+    		$scope.timeLeft = 15;
       if (timeLeft <= 0) {
-        $('#album-cover').removeClass('animate-blur');
+      	$('#album-cover').removeClass('animate-blur');
         $('#album-cover').removeClass('no-blur');
         if ($scope.roundActive) {
           $scope.roundActive = false;
@@ -173,8 +172,6 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       if ($scope.currentYear >= $scope.timelineSongs[ans-1].year &&
           $scope.currentYear <= $scope.timelineSongs[ans].year)
         answerSuccess();
-      else
-      	$scope.comboplyer = 1;
     }
 
     //clear the selection
@@ -185,13 +182,12 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.markerSet = false;
     $scope.score.round = 0;
     $scope.roundActive = true;
-
   }
 
   function answerSuccess() {
     addSongToTimeline($scope.currentSong); 
-    $scope.score.total += ($scope.score.round * $scope.comboplyer);
-  	$scope.comboplyer++;
+    $scope.score.total += $scope.score.round;
+    $scope.currentSong.success = true;
   }
 
 }]);
@@ -199,7 +195,4 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 function getRandomSong(year){
 	return year[Math.floor(Math.random()*year.length)];
 }
-
-
-
 
