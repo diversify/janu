@@ -49,9 +49,10 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
       else
         $scope.timeLeft = 15;
       if (timeLeft <= 0) {
-        $('#album-cover').removeClass('animate-blur');
+        $scope.timeLeft = 0;
+      	$('#album-cover').removeClass('animate-blur');
         $('#album-cover').removeClass('no-blur');
-        if ($scope.roundActive) {
+        if ($scope.roundActive && !musicLoading()) {
           $scope.roundActive = false;
           checkAnswer();
         }
@@ -82,6 +83,9 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
   }
 
   $scope.placeMarker = function () {
+    if (!$scope.roundActive)
+      return;
+
     index = markerIndex();
 
     //if it's the final span, then represent as -1
@@ -154,7 +158,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 		janu.timelineYears.sort();
   }
 
-  function checkAnswer() {
+  function checkAnswerInternal() {
     ans = $scope.currentAnswer ;
 
     if (ans === undefined || ans === null) {
@@ -180,12 +184,22 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     //clear the selection
     $scope.currentAnswer = null;
 
+    // new song
     newSong = fetchNewSong();
     playSong(newSong);
     $scope.markerSet = false;
     $scope.score.round = 0;
     $scope.roundActive = true;
 
+  }
+
+  function checkAnswer() {
+    $scope.roundActive = false;
+    $("#song-details").fadeIn(500);
+    setTimeout(function () {
+      $("#song-details").fadeOut(500);
+      checkAnswerInternal();
+    }, 3000);
   }
 
   function answerSuccess() {
