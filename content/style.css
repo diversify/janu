@@ -425,3 +425,15 @@ button {
  0%   { color: #eee;}
  100% { color: #c66;}
 }
+#ending-screen{
+    background-color: #eee;
+    border-radius: 10px;
+    position: fixed;
+    top:0;
+    width:80%;
+    height:80%;
+    margin: 10% 10%;
+}
+.hidden-element{
+    display: none;
+}

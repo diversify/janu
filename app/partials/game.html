@@ -33,5 +33,9 @@
 
 <div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em><em class="emergency">{{(score.round!=0 && ' + ' + score.round + (' x ' + comboplyer)|| '')}}</em></h2><h2 id="round">CORRECT GUESSES {{timelineSongs.length}} / 10</h2></div>
 <div id="combo-div"><img src="content/image/combo-icon.png" alt="COMBO" id="combo" /><h2>{{comboplyer}}</h2></div>
+<div id="ending-screen" class="hidden-element">
+	<h1>Game Over</h1>
+	<h1>Your score was: {{score.total}}</h1>
+</div>
 
 
