@@ -163,6 +163,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     newSong = fetchNewSong();  
     playSong(newSong);
     $scope.markerSet = false;
+    $scope.score.round = 0;
   }
 
   function answerSuccess() {

@@ -1,11 +1,10 @@
 
 
 <div id="game-header"><h2><a href="/">BACK</a></div>
-<!-- <input type="button" value = "Add Song" ng&#45;click="addSong()"> -->
 <div class="rings-in-back"></div>
 <div class="rings-in-front"></div>
 <div id="game-content" ng-init="init()">
-  <img src="content/image/audiowave-gif.gif" id="album-cover" alt="album cover" />
+  <img ng-src="{{currentSong.image_url !== undefined && currentSong.image_url || content/images/audiowave-gif.gif}}" id="album-cover" alt="album cover" />
   <div ng-if="gameInSession" class="question-and-timer">
   	<h2 id="timer"><strong>{{timeLeft}}</strong></h2>
     <h2 id="question">Which timespan?</h2>
@@ -23,5 +22,5 @@
 	<div id="timeline-base-span" class="{{isSelected(-1)}} {{markerHovers(-1)}}"></div>
 </div>
 
-<div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em></h2><h2 id="round">CORRECT GUESSES {{timelineSongs.length}} / 10</h2></div>
+<div id="game-footer"><h2 id="score">SCORE <em>{{score.total}}</em><em class="emergency">{{score.round!=0 && ' +' + score.round || ''}}</em></h2><h2 id="round">CORRECT GUESSES {{timelineSongs.length}} / 10</h2></div>
 
