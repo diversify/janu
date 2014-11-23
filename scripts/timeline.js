@@ -1,3 +1,4 @@
+var markerSet = false;
 function calculateWidths(numSpans){
 	if(numSpans)
 		return (100.0/numSpans);
