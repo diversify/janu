@@ -1,7 +1,11 @@
 # Diversify your music taste
 
+This is a game that will help you broaden your taste in music.
+
 # How to get started
 
-- Clone the repo
-- Start an HTTP server in the root of the repository. Some people like ``python -m SimpleHTTPServer``
-- Visit the server in your web browser of choice
+```bash
+git clone $THIS_REPO
+python -m SimpleHTTPServer
+# Visit the page served by the web server above
+```

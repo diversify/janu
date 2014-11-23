@@ -110,8 +110,18 @@ label {
     border-radius: 50%;
     position: relative;
     -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
     filter: blur(10px);
     z-index: 4;
+}
+.no-blur{
+    -webkit-filter: blur(0px)!important;
+    -moz-filter: blur(0px)!important;
+    filter: blur(0px)!important;
+}
+.animate-blur{
+    -webkit-transition:17s -webkit-filter linear!important;
+    transition:-webkit-filter 17s linear!important;
 }
 
 .rings-in-back { 
@@ -373,4 +383,22 @@ button {
 
 .wrong {
     border-color: #da3e2f !important;
+}
+.emergency
+{
+ -webkit-animation: cc 1s ease-in 1s infinite alternate;
+ animation: cc 1s ease-in 1s infinite alternate;
+ color: #eee;
+}
+
+@-webkit-keyframes cc
+{
+ 0%   { color: #eee;}
+ 100% { color: #c66 ;}
+}
+
+@keyframes cc
+{
+ 0%   { color: #eee;}
+ 100% { color: #c66;}
 }
