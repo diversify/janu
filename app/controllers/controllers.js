@@ -159,7 +159,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
 		janu.timelineYears.sort();
   }
 
-  function checkAnswerInternal() {
+  function checkAnswer() {
     ans = $scope.currentAnswer ;
 
     if (ans === undefined || ans === null) {
@@ -186,20 +186,15 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     $scope.currentAnswer = null;
 
     // new song
-    newSong = fetchNewSong();
-    playSong(newSong);
-    $scope.markerSet = false;
-    $scope.score.round = 0;
-    $scope.roundActive = true;
-
-  }
-
-  function checkAnswer() {
     $scope.roundActive = false;
     $("#song-details").fadeIn(500);
     setTimeout(function () {
       $("#song-details").fadeOut(500);
-      checkAnswerInternal();
+      newSong = fetchNewSong();
+      playSong(newSong);
+      $scope.markerSet = false;
+      $scope.score.round = 0;
+      $scope.roundActive = true;
     }, 3000);
   }
 
