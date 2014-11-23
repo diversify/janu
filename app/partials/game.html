@@ -1,26 +1,16 @@
-<script type="text/javascript">
-	// $('#timeline').mouseenter(function(e){
-	// 	$("#current-song-circle").css({width:'80px', height:'80px'});
-	// });
 
-	// $('#timeline').mousemove(function(e){
-	// 	if(!markerSet)
-	//     	$("#current-song-circle").css({left:e.pageX});
-	// });
-</script>
 
 <div id="game-header"><h2><a href="/">BACK</a></div>
 <!-- <input type="button" value = "Add Song" ng&#45;click="addSong()"> -->
 <div class="rings-in-back"></div>
 <div class="rings-in-front"></div>
-<div id="game-content">
+<div id="game-content" ng-init="init()">
   <img src="content/image/audiowave-gif.gif" id="album-cover" alt="album cover" />
   <div ng-if="gameInSession" class="question-and-timer">
   	<h2 id="timer"><strong>{{timeLeft}}</strong></h2>
     <h2 id="question">Which timespan?</h2>
   </div>
   <div ng-if="!gameInSession">
-    <input type="button" ng-click="startGame()" id="start-game" value="Start Game" />
   </div>
 </div>
 

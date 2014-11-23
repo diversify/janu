@@ -3,12 +3,14 @@ var app = angular.module('janu');
 app.controller('januController', ['$scope','$http','$interval', function ($scope,$http,$interval){
 	var janu = $scope;
 
-	$http.get('data/output.json').success(function(data){
-			janu.songs = data;
-	});
 
   $scope.gameInSession = false;
-
+  $scope.init = function (){
+  	$http.get('data/output.json').success(function(data){
+		janu.songs = data;
+		janu.startGame();
+	});
+  };
   // start game
   $scope.startGame = function () {
     // reset all game variables
