@@ -213,7 +213,7 @@ app.controller('januController', ['$scope','$http','$interval','$location', func
       $('#album-cover').removeClass('wrong');
       $("#song-details").hide();
       if($scope.timelineSongs.length===10){
-        $location.path('/end?'+$scope.score.total);
+        $location.path('/win');
       }
       newSong = fetchNewSong();
       playSong(newSong);
