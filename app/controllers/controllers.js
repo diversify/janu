@@ -158,7 +158,7 @@ app.controller('januController', ['$scope','$http','$interval', function ($scope
     ans = $scope.currentAnswer ;
 
     if (ans === undefined || ans === null) {
-      // user hasn't chosen an answer, should skip to bottom
+      $scope.comboplyer = 1;
     }
     else if($scope.timelineSongs.length==0){
     	answerSuccess();
